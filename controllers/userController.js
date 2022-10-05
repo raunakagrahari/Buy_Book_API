@@ -12,12 +12,7 @@ const signToken = id => {
 
 exports.Signup = async (req,res,next)=>{
     try{
-        const newUser = await User.create({
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password,
-            passwordConfirm: req.body.passwordConfirm
-        })
+        const newUser = await User.create(req.body)
         const Token = signToken(User._id)
         res.status(200).json({
             status:'success',

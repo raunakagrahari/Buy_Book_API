@@ -2,11 +2,7 @@ const Book = require('./../models/bookModel');
 
 exports.createBook = async (req,res,next)=>{
     try{
-        const newBook = await Book.create({
-            bookname:req.body.bookname,
-            author:req.body.author,
-            price:req.body.price
-        })
+        const newBook = await Book.create(req.body)
         res.status(200).json({
             status:'success',
             message:'You book is now added to our library',
